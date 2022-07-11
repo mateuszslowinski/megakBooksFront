@@ -16,7 +16,7 @@ export const Menu = () => {
                     <a href="books/ad">Dodaj książkę</a>
                 </li>
             </ul>
-            {/*<Searchbar/>*/}
+            <Searchbar/>
         </div>
     )
 }
