@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {Btn} from "../../../common/Btn/Btn";
 import {BookElement} from "./BookElement";
 import {Message} from "../../../common/Message/Message";
@@ -55,6 +55,7 @@ export const ExtendedBook = () => {
             </div>
             <BookElement class="desc" header="Opis:" value={desc}/>
             <div className="books_buttons">
+                <Link className='btn' to={`/books/edit/${id}`}>Edytuj</Link>
                 <Btn text="Usuń" onClick={removeBook}/>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {Searchbar} from "../../common/Searchbar/Searchbar";
 
 import './Menu.css';
@@ -7,13 +8,13 @@ export const Menu = () => {
         <div className="menu_container">
             <ul className="menu_links">
                 <li className="menu_item">
-                    <a href="/">Strona główna</a>
+                    <Link to="/">Strona główna</Link>
                 </li>
                 <li className="menu_item">
-                    <a href="books">Moje książki</a>
+                    <Link to="books">Moje książki</Link>
                 </li>
                 <li className="menu_item">
-                    <a href="books/ad">Dodaj książkę</a>
+                    <Link to="books/ad">Dodaj książkę</Link>
                 </li>
             </ul>
             <Searchbar/>
