@@ -1,0 +1,17 @@
+h2 {
+    width: 98vw;
+    padding: 10px 5px;
+    text-align: center;
+    font-size: 2.5rem;
+    background-color: #0d6efd;
+}
+
+.books_container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 5px ;
+    padding: 10px;
+    background-color: #ccc;
+}
+

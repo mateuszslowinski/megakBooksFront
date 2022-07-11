@@ -1,0 +1,19 @@
+.site-header{
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    background: url(../../../../assets/books-g65b430545_1280.jpg) ;
+    background-size: cover;
+    padding: 70px 0;
+}
+
+.site-header h1 {
+    color: white;
+    padding:  4px 15px;
+    border-radius: 10px;
+    background-color: #24252A;
+    font-size: 3rem;
+}

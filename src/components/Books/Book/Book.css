@@ -1,0 +1,70 @@
+.book_container {
+    border: 2px solid black;
+    font-size: 2rem;
+    background-color: white;
+    width: 30%;
+    margin: 5px;
+    padding: 10px;
+}
+
+.book_info {
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+p {
+    color: #333;
+    font-size: 1.1rem;
+    font-family: "Times New Roman", serif;
+    margin-top: 5px;
+}
+
+.title div {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 3px;
+}
+
+.container_author_rating {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.author div {
+    font-size: 1.6rem;
+
+}
+
+.rating, .author {
+    margin-top: 5px;
+}
+
+.rating div {
+    background-color: black;
+    font-size: 1.4rem;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 50%;
+    color: white;
+    padding: 4px;
+
+
+}
+
+.desc {
+    margin: 5px;
+    font-size: 1.3rem;
+    padding: 10px;
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.btn {
+    width: 60%;
+    margin: 10px auto 5px;
+}
