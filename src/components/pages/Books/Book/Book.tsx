@@ -1,9 +1,10 @@
 import React from "react";
-import {Btn} from "../../../common/Btn/Btn";
+import {Link} from "react-router-dom";
 import {BookElement} from "./BookElement";
 import {SimpleBookEntity} from 'types';
 
 import './Book.css';
+
 
 
 export const Book = (props: SimpleBookEntity) => {
@@ -17,7 +18,7 @@ export const Book = (props: SimpleBookEntity) => {
                 </div>
                 <BookElement class="desc" header="Opis:"
                              value={props.desc.length > 400 ? props.desc.substring(0, 400) + "..." : props.desc}/>
-                <Btn text="Pokaż więcej"/>
+                <Link className='btn' to={`/books/${props.id}`}>Pokaż więcej</Link>
             </div>
         </div>
     );

@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from "react";
-import { Book } from "../Books/Book/Book";
+import {Book} from "../Books/Book/Book";
+import {Message} from "../../common/Message/Message";
 import {BookEntity} from 'types';
+
 
 export const Home = () => {
 
     const [books, setBooks] = useState<BookEntity[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         (async () => {
@@ -13,12 +16,18 @@ export const Home = () => {
             const sortedBooksAtRating = data.sort((a: BookEntity, b: BookEntity) => (a.rating > b.rating) ? -1 : 1);
             sortedBooksAtRating.splice(3, sortedBooksAtRating.length);
             setBooks(sortedBooksAtRating);
+            setLoading(false);
         })();
     }, [])
 
+    if (loading) {
+        return <Message text="Wczytywanie danych..."/>
+    }
 
     return (
         <>
+            {books.length !== 0
+                ?
                 <div>
                     <h2>Najlepiej ocenione książki:</h2>
                     <div className='books_container'>
@@ -30,6 +39,7 @@ export const Home = () => {
                         ))}
                     </div>
                 </div>
+                : <Message text="Dodaj książki do swojej biblioteki"/>}
         </>
     )
 }
