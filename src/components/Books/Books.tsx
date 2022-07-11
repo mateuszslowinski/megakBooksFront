@@ -1,17 +1,30 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Book} from "./Book/Book";
 
-
+import {BookEntity} from 'types';
 import './Books.css'
 
 export const Books = () => {
+
+    const [books, setBooks] = useState<BookEntity[]>([])
+
+    useEffect(() => {
+        (async () => {
+            const res = await fetch('http://localhost:3001/books');
+            const data = await res.json();
+            setBooks(data)
+        })()
+    })
+
     return (
         <>
             <h2>Najlepiej ocenione książki:</h2>
             <div className='books_container'>
-                <Book/>
-                <Book/>
-                <Book/>
+                {books.map(book => (
+                    <Book key={book.id}
+                        {...book}
+                    />
+                ))}
             </div>
         </>
 

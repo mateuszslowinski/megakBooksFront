@@ -1,32 +1,31 @@
 import React from "react";
-import './Book.css';
 import {Btn} from "../../common/Btn/Btn";
+import {SimpleBookEntity} from 'types';
 
+import './Book.css';
 
-export const Book = () => {
+export const Book = (props: SimpleBookEntity) => {
     return (
         <div className="book_container">
             <div className="book_info">
                 <div className="title">
                     <p>Tytuł:</p>
-                    <div>Dłuższy tytuł co pokaże mi wielkość miejsca dostępnego albo coś część IV </div>
+                    <div>{props.title} </div>
                 </div>
                 <div className="container_author_rating">
                     <div className="author">
                         <p>Autor:</p>
-                        <div>Andzrzej Jan</div>
+                        <div>{props.author}</div>
                     </div>
                     <div className="rating">
                         <p>Ocena:</p>
-                        <div>9.3</div>
+                        <div>{props.rating}</div>
                     </div>
                 </div>
                 <p>Opis:</p>
-                <div className="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque corporis enim eum
-                    mollitia saepe. Consequatur corporis distinctio doloribus exercitationem fugit illo molestias natus
-                    nemo numquam, officia rem sint ut veniam?
+                <div className="desc">{props.desc}
                 </div>
-           <Btn text="Więcej"/>
+           <Btn text="Pokaż więcej"/>
             </div>
         </div>
     );
