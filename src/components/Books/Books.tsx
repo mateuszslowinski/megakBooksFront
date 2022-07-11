@@ -13,7 +13,7 @@ export const Books = () => {
             const res = await fetch('http://localhost:3001/books');
             const data = await res.json();
             setBooks(data)
-        })()
+        })();
     })
 
     return (
@@ -21,7 +21,8 @@ export const Books = () => {
             <h2>Najlepiej ocenione książki:</h2>
             <div className='books_container'>
                 {books.map(book => (
-                    <Book key={book.id}
+                    <Book
+                        key={book.id}
                         {...book}
                     />
                 ))}

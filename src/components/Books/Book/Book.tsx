@@ -1,31 +1,23 @@
 import React from "react";
 import {Btn} from "../../common/Btn/Btn";
+import {BookElement} from "./BookElement";
 import {SimpleBookEntity} from 'types';
 
 import './Book.css';
+
 
 export const Book = (props: SimpleBookEntity) => {
     return (
         <div className="book_container">
             <div className="book_info">
-                <div className="title">
-                    <p>Tytuł:</p>
-                    <div>{props.title} </div>
-                </div>
+                <BookElement class="title" header="Tytuł:" value={props.title}/>
                 <div className="container_author_rating">
-                    <div className="author">
-                        <p>Autor:</p>
-                        <div>{props.author}</div>
-                    </div>
-                    <div className="rating">
-                        <p>Ocena:</p>
-                        <div>{props.rating}</div>
-                    </div>
+                    <BookElement class="author" header="Autor:" value={props.author}/>
+                    <BookElement class="rating" header="Ocena:" value={props.rating}/>
                 </div>
-                <p>Opis:</p>
-                <div className="desc">{props.desc}
-                </div>
-           <Btn text="Pokaż więcej"/>
+                <BookElement class="desc" header="Opis:"
+                             value={props.desc.length > 400 ? props.desc.substring(0, 400) + "..." : props.desc}/>
+                <Btn text="Pokaż więcej"/>
             </div>
         </div>
     );
