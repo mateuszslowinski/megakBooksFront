@@ -1,5 +1,5 @@
 import React from "react";
-import {Btn} from "../../common/Btn/Btn";
+import {Btn} from "../../../common/Btn/Btn";
 import {BookElement} from "./BookElement";
 import {SimpleBookEntity} from 'types';
 

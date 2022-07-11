@@ -1,7 +1,10 @@
 import React from 'react';
+import {Route, Routes} from 'react-router-dom';
 import {Header} from './components/layout/Header/Header';
 import {Menu} from './components/layout/Menu/Menu';
-import {Books} from "./components/Books/Books";
+import {Books} from "./components/pages/Books/Books";
+import { Home } from './components/pages/Home/Home';
+
 
 import './App.css';
 
@@ -14,8 +17,10 @@ export const App = () => {
 
             <Header/>
             <Menu/>
-            <Books/>
-
+            <Routes>
+                <Route path='/' element={<Home/>}/>
+                <Route path="/books" element={<Books/>}/>
+            </Routes>
         </div>
     );
 }
