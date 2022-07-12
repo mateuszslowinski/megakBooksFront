@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
-import ReactPaginate from "react-paginate";
+import {Pagination} from "../../common/Pagination/Pagination";
 import {Book} from "./Book/Book";
 import {Message} from "../../common/Message/Message";
 import {BookEntity} from 'types';
 
 import './Books.css'
+
 
 
 export const Books = () => {
@@ -48,14 +49,7 @@ export const Books = () => {
                             {...book}
                         />
                     ))}
-                    <ReactPaginate
-                        previousLabel={"Poprzednia"}
-                        nextLabel={"Następna"}
-                        pageCount={pageCount}
-                        onPageChange={changePage}
-                        containerClassName={"paginationBttns"}
-                        activeClassName={"paginationActive"}
-                    />
+                    <Pagination pageCount={pageCount} onChange={changePage}/>
                 </div>
             </>
             : <Message text="Dodaj książki do swojej biblioteki"/>}
