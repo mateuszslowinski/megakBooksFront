@@ -8,7 +8,6 @@ import {BookEntity} from 'types';
 
 import './Books.css'
 
-
 export const Books = () => {
 
     const [books, setBooks] = useState<BookEntity[]>([]);
@@ -46,7 +45,7 @@ export const Books = () => {
     };
 
     if (loading) {
-        return <Message text=">Wczytywanie danych..."/>
+        return <Message text="Wczytywanie danych..."/>
     }
 
     return (

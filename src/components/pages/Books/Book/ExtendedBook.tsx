@@ -13,7 +13,6 @@ export const ExtendedBook = () => {
     const navigate = useNavigate();
     const {id} = useParams();
 
-
     useEffect(() => {
         (async () => {
             const res = await fetch(`http://localhost:3001/books/${id}`);
@@ -21,7 +20,6 @@ export const ExtendedBook = () => {
             setBook(data);
         })();
     }, [id]);
-
 
     const removeBook = async () => {
         try {

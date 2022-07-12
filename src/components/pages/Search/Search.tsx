@@ -34,7 +34,6 @@ export const Search = () => {
         })();
     }, [term])
 
-
     if (term === undefined) {
         return <Message text="Wpisz szukany tytuł."/>
     }

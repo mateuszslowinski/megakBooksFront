@@ -22,7 +22,7 @@ export const BookForm = (props: Props) => {
     const [resId, setResId] = useState('');
 
     const [form, setForm] = useState({
-        title: props.formValues.title,
+        title: props.formValues.title ,
         author: props.formValues.author,
         rating: props.formValues.rating,
         desc: props.formValues.desc,
@@ -38,6 +38,8 @@ export const BookForm = (props: Props) => {
         }));
     };
 
+
+
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
         try {
@@ -50,7 +52,7 @@ export const BookForm = (props: Props) => {
             setResId(data.id);
         } finally {
             setLoading(false);
-        };
+        }
     }
 
     if (loading) {

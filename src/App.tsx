@@ -10,18 +10,12 @@ import {EditForm} from './components/pages/Forms/EditForm/EditForm';
 import {NotFound} from "./components/pages/NotFound/NotFound";
 import { Search } from './components/pages/Search/Search';
 
-
 import './App.css';
-
-
-
-
 
 export const App = () => {
 
     return (
         <div className="App">
-
             <Header/>
             <Menu/>
             <Routes>
