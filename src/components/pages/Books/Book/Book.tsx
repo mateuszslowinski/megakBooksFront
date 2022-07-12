@@ -18,8 +18,8 @@ export const Book = (props: SimpleBookEntity) => {
                 </div>
                 <BookElement class="desc" header="Opis:"
                              value={props.desc.length > 400 ? props.desc.substring(0, 400) + "..." : props.desc}/>
-                <Link className='btn' to={`/books/${props.id}`}>Pokaż więcej</Link>
             </div>
+            <Link className='btn' to={`/books/${props.id}`}>Pokaż więcej</Link>
         </div>
     );
 }

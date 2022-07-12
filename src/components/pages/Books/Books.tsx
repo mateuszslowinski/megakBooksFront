@@ -15,7 +15,7 @@ export const Books = () => {
     const [loading, setLoading] = useState(true);
     const [sortValue, setSortValue] = useState('');
 
-    const bookPerPage = 9;
+    const bookPerPage = 8;
     const pagesVisited = pageNumber * bookPerPage;
 
     const pageCount = Math.ceil(books.length / bookPerPage)

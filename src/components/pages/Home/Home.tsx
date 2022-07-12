@@ -14,7 +14,7 @@ export const Home = () => {
             const res = await fetch('http://localhost:3001/books');
             const data = await res.json();
             const sortedBooksAtRating = data.sort((a: BookEntity, b: BookEntity) => (a.rating > b.rating) ? -1 : 1);
-            sortedBooksAtRating.splice(3, sortedBooksAtRating.length);
+            sortedBooksAtRating.splice(4, sortedBooksAtRating.length);
             setBooks(sortedBooksAtRating);
             setLoading(false);
         })();

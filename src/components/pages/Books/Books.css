@@ -10,15 +10,15 @@ h2 {
 
 .books_container {
     display: flex;
-    justify-content: space-between;
-    width: 90vw;
+    justify-content: space-around;
+    width: 95vw;
     flex-wrap: wrap;
-    margin: 0 auto;
-    padding: 25px;
     background-color: #ccc;
+    padding: 10px ;
 }
-
 .books_buttons {
     display: flex;
     flex-direction: column;
+    min-width: 40vw;
 }
+
