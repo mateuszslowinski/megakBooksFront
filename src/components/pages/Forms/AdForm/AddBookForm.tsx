@@ -1,7 +1,8 @@
-import React, {SyntheticEvent, useState} from "react";
+import React, {useState} from "react";
 import {BookForm} from "../BookForm";
 
 export const AddBookForm = () => {
+
     const [form, setForm] = useState({
         id: '',
         title: '',
