@@ -17,6 +17,11 @@ Next you can run by:
 ```sh
   npm start
 ```
+# Important!
+It could be problem with connect property types from backend. You should go to tsconfig.paths.json and change "types" to correct path. This path probably help:
+```
+"../../megakBooksBack-main/megakBooksBack-main/types"
+```
   
 
  You will then be able to access it at localhost:3000.
