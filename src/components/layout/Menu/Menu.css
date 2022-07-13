@@ -1,0 +1,31 @@
+.menu_container {
+    display: flex;
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+    width: 100vw;
+    margin:  5px;
+    padding: 10px 5px;
+    background-color: #24252A;
+}
+
+.menu_links {
+    display: flex;
+    list-style-type: none;
+
+}
+
+.menu_item a {
+    line-height: 35px;
+    font-size: 20px;
+    padding: 5px;
+    margin: 5px;
+    color: #edf0f1;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.menu_item a:hover {
+    color: red;
+
+}

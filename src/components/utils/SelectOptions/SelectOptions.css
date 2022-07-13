@@ -1,0 +1,24 @@
+.select_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 2rem;
+    background-color: white;
+    margin-top: .5rem;
+    padding: .5rem 0;
+}
+
+.select_container p {
+    font-size: 1.7rem;
+    margin-right: 10px;
+
+}
+.select_container select {
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #ccc;
+    padding: .3rem;
+}
