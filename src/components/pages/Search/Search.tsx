@@ -3,9 +3,11 @@ import {useParams} from "react-router-dom";
 import {Book} from "../Books/Book/Book";
 import {Message} from "../../common/Message/Message";
 import {Pagination} from "../../common/Pagination/Pagination";
+import {apiUrl} from "../../../config/api";
 import {BookEntity} from 'types';
 
 import './Search.css';
+
 
 
 export const Search = () => {
@@ -23,11 +25,11 @@ export const Search = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch('http://localhost:3001/books');
+            const res = await fetch(`${apiUrl}/books`);
             const data = await res.json();
             setBooks(data);
             if (term !== undefined) {
-                const res = await fetch(`http://localhost:3001/search/${term}`);
+                const res = await fetch(`${apiUrl}/search/${term}`);
                 const data = await res.json();
                 setBooks(data);
             }

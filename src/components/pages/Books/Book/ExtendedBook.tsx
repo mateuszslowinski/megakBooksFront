@@ -3,6 +3,7 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import {Btn} from "../../../common/Btn/Btn";
 import {BookElement} from "./BookElement";
 import {Message} from "../../../common/Message/Message";
+import {apiUrl} from "../../../../config/api";
 import {BookEntity} from 'types';
 
 import './Book.css';
@@ -15,7 +16,7 @@ export const ExtendedBook = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch(`http://localhost:3001/books/${id}`);
+            const res = await fetch(`${apiUrl}/books/${id}`);
             const data = await res.json();
             setBook(data);
         })();
@@ -23,7 +24,7 @@ export const ExtendedBook = () => {
 
     const removeBook = async () => {
         try {
-            await fetch(`http://localhost:3001/books/${id}`, {
+            await fetch(`${apiUrl}/books/${id}`, {
                 method: "DELETE",
             });
         } finally {

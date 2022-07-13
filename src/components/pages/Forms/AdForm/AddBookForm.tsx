@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {BookForm} from "../BookForm";
+import {apiUrl} from "../../../../config/api";
 
 export const AddBookForm = () => {
 
@@ -13,7 +14,7 @@ export const AddBookForm = () => {
         pages: 0,
         species: '',
     });
-    const url = 'http://localhost:3001/books';
+    const url = `${apiUrl}/books`;
 
     return (
         <BookForm btnText="Dodaj" method='POST' messageText="dodawanie" urlAddress={url} formValues={form}/>

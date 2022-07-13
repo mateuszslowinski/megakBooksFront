@@ -2,7 +2,9 @@ import React, {useEffect, useState} from "react";
 import {BookForm} from "../BookForm";
 import {useParams} from "react-router-dom";
 import {Message} from "../../../common/Message/Message";
+import {apiUrl} from "../../../../config/api";
 import {BookEntity} from "types";
+
 
 export const EditForm = () => {
     const [form, setForm] = useState<BookEntity>({
@@ -19,7 +21,7 @@ export const EditForm = () => {
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
 
-    const url = `http://localhost:3001/books/${id}`;
+    const url = `${apiUrl}/books/${id}`;
 
     useEffect(() => {
         (async () => {

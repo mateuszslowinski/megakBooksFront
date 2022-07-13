@@ -4,9 +4,11 @@ import {Pagination} from "../../common/Pagination/Pagination";
 import {Book} from "./Book/Book";
 import {Message} from "../../common/Message/Message";
 import {SelectOptions} from "../../utils/SelectOptions/SelectOptions";
+import {apiUrl} from "../../../config/api";
 import {BookEntity} from 'types';
 
 import './Books.css'
+
 
 export const Books = () => {
 
@@ -24,15 +26,15 @@ export const Books = () => {
     useEffect(() => {
         (async () => {
             if (sortValue === 'best') {
-                const res = await fetch('http://localhost:3001/select/increase');
+                const res = await fetch(`${apiUrl}/select/increase`);
                 const data = await res.json();
                 setBooks(data);
             } else if (sortValue === 'worse') {
-                const res = await fetch('http://localhost:3001/select/decrease');
+                const res = await fetch(`${apiUrl}/select/decrease`);
                 const data = await res.json();
                 setBooks(data);
             } else {
-                const res = await fetch('http://localhost:3001/select/alphabetically');
+                const res = await fetch(`${apiUrl}/select/alphabetically`);
                 const data = await res.json();
                 setBooks(data);
             }
