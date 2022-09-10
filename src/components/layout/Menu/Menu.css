@@ -1,10 +1,9 @@
 .menu_container {
     display: flex;
     justify-content: space-between;
-
     flex-wrap: wrap;
     width: 100vw;
-    margin:  5px;
+    margin-bottom: 10px;
     padding: 10px 5px;
     background-color: #24252A;
 }
