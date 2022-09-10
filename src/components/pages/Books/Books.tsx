@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
+import axios from "axios";
+import {apiUrl} from "../../../config/api";
 import {BooksContext} from "../../context/BooksContext/BooksContext";
 import {Pagination} from "../../common/Pagination/Pagination";
 import {Book} from "./Book/Book";
 import {Message} from "../../common/Message/Message";
 import {SelectOptions} from "../../utils/SelectOptions/SelectOptions";
-import {apiUrl} from "../../../config/api";
 import {BookEntity} from 'types';
-
 import './Books.css'
 
 
@@ -26,17 +26,14 @@ export const Books = () => {
     useEffect(() => {
         (async () => {
             if (sortValue === 'best') {
-                const res = await fetch(`${apiUrl}/select/increase`);
-                const data = await res.json();
-                setBooks(data);
+                const res = await axios.get(`${apiUrl}/select/increase`);
+                setBooks(res.data);
             } else if (sortValue === 'worse') {
-                const res = await fetch(`${apiUrl}/select/decrease`);
-                const data = await res.json();
-                setBooks(data);
+                const res = await axios.get(`${apiUrl}/select/decrease`);
+                setBooks(res.data);
             } else {
-                const res = await fetch(`${apiUrl}/select/alphabetically`);
-                const data = await res.json();
-                setBooks(data);
+                const res = await axios(`${apiUrl}/select/alphabetically`);
+                setBooks(res.data);
             }
             setLoading(false);
         })()

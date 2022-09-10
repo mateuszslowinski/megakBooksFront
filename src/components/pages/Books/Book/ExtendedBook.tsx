@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import {Btn} from "../../../common/Btn/Btn";
 import {BookElement} from "./BookElement";
@@ -16,9 +17,8 @@ export const ExtendedBook = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch(`${apiUrl}/books/${id}`);
-            const data = await res.json();
-            setBook(data);
+            const res = await axios.get(`${apiUrl}/books/${id}`);
+            setBook(res.data);
         })();
     }, [id]);
 

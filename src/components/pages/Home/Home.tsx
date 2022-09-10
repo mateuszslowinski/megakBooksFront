@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import axios from "axios";
 import {Book} from "../Books/Book/Book";
 import {Message} from "../../common/Message/Message";
 import {apiUrl} from "../../../config/api";
@@ -7,15 +8,13 @@ import {BookEntity} from 'types';
 
 
 export const Home = () => {
-
     const [books, setBooks] = useState<BookEntity[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         (async () => {
-            const res = await fetch(`${apiUrl}/books`);
-            const data = await res.json();
-            const sortedBooksAtRating = data.sort((a: BookEntity, b: BookEntity) => (a.rating > b.rating) ? -1 : 1);
+            const res = await axios(`${apiUrl}/books`);
+            const sortedBooksAtRating = res.data.sort((a: BookEntity, b: BookEntity) => (a.rating > b.rating) ? -1 : 1);
             sortedBooksAtRating.splice(4, sortedBooksAtRating.length);
             setBooks(sortedBooksAtRating);
             setLoading(false);
