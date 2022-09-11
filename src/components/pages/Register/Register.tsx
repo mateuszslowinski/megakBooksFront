@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {useForm} from "react-hook-form";
-import {emailValidate} from "../../utils/validate.pattern";
+import {emailValidate} from "../../../utils/validate.pattern";
 import {apiUrl} from "../../../config/api";
 import {Btn} from "../../common/Btn/Btn";
 import './Register.css';
