@@ -4,7 +4,7 @@ import { RootState } from "../../app/store"
 import { apiUrl } from "../../config/api";
 import {LoginUserResponse,LoginUser, UserResponse} from 'types'
 
-export const userLogin = createAsyncThunk<
+export const userLogin:any = createAsyncThunk<
     LoginUserResponse,
     LoginUser,
     { state: RootState }
