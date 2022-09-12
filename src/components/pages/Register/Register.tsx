@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import axios from "axios";
-import {useForm} from "react-hook-form";
-import {emailValidate} from "../../../utils/validate.pattern";
 import {apiUrl} from "../../../config/api";
+import {useNavigate} from "react-router-dom";
+import {useForm} from "react-hook-form";
 import {Btn} from "../../common/Btn/Btn";
+import {emailValidate} from "../../../utils/validate.pattern";
+
 import './Register.css';
 
 type RegisterFormType = {
@@ -16,7 +18,7 @@ export const Register = () => {
 
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [openMessage, setOpenMessage] = useState<boolean>(false);
-
+    const navigate = useNavigate();
     const {
         handleSubmit,
         register,
@@ -28,7 +30,7 @@ export const Register = () => {
 
     const onSubmit = async ({name, email, password}: RegisterFormType) => {
         try {
-            const res = await axios.post(`${apiUrl}/users/register`,({name,email,password}), {
+            const res = await axios.post(`${apiUrl}/users/register`, ({name, email, password}), {
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -38,6 +40,7 @@ export const Register = () => {
                 setOpenMessage(true);
                 setTimeout(() => {
                     setOpenMessage(false)
+                    navigate('/login')
                 }, 1500);
             }
         } catch (error: any) {
