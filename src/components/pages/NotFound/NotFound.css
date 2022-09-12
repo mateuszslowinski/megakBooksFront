@@ -1,15 +1,15 @@
-.error_container{
+.error_container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80vw;
-    min-height: 50vh;
-    margin-top: 20px;
+    min-height: 60vh;
+    margin: 0 auto;
     text-align: center;
     background-color: rgb(179, 25, 25);
 }
 
-.error_message{
+.error_message {
     margin-bottom: 60px;
 }
 
@@ -17,8 +17,9 @@
     font-size: 5rem;
 }
 
-.error_message p  {
+.error_message p {
     font-size: 3rem;
+    padding: 10px;
     font-weight: bold;
     color: black;
 }
