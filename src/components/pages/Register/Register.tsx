@@ -80,7 +80,7 @@ export const Register = () => {
                         required: "Email jest wymagany",
                         pattern: {
                             value: emailValidate,
-                            message: `Email musi zawierać @`,
+                            message: `Wymagana porawna forma emaila`,
                         },
                     })}
                     onChange={handleChange}
