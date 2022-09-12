@@ -8,10 +8,11 @@ import {ExtendedBook} from './components/pages/Books/Book/ExtendedBook';
 import {AddBookForm} from "./components/pages/Forms/AdForm/AddBookForm";
 import {EditForm} from './components/pages/Forms/EditForm/EditForm';
 import {NotFound} from "./components/pages/NotFound/NotFound";
-import { Search } from './components/pages/Search/Search';
+import {Search} from './components/pages/Search/Search';
+import {Register} from "./components/pages/Register/Register";
+import {Login} from "./components/pages/Login/Login";
 
 import './App.css';
-
 export const App = () => {
 
     return (
@@ -20,6 +21,8 @@ export const App = () => {
             <Menu/>
             <Routes>
                 <Route path='/' element={<Home/>}/>
+                <Route path='/register' element={<Register/>}/>
+                <Route path='/login' element={<Login/>}/>
                 <Route path="/books" element={<Books/>}/>
                 <Route path="/books/:id" element={<ExtendedBook/>}/>
                 <Route path="/books/ad" element={<AddBookForm/>}/>
