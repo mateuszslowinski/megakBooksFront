@@ -59,7 +59,7 @@ export const BookForm = ({btnText,method,messageText,urlAddress,formValues}: Pro
         return <h2>Trwa {messageText} książki</h2>
     }
     if (resId) {
-        navigate('/books');
+        navigate('/');
     }
 
     return (
