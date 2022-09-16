@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useForm} from "react-hook-form";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import {RootState} from "../../../app/store";
+import {UserState} from "../../../features/user/userSlice";
 import {userLogin} from '../../../features/user/userActions';
 import {emailValidate} from "../../../utils/validate.pattern";
 import {Btn} from "../../common/Btn/Btn";
@@ -12,7 +14,7 @@ type LoginType = {
 }
 
 export const Login = () => {
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const {userInfo, errorMessage}: UserState = useSelector((store: RootState) => store.users);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -28,13 +30,12 @@ export const Login = () => {
         const {email, password} = data
         if (email && password) {
             dispatch(userLogin({email, password}))
-            navigate('/')
         }
     }
-    const handleChange = () => {
-        setErrorMessage(null)
-    };
 
+    if (userInfo?.id) {
+        navigate('/')
+    }
     return (
         <>
             <h2>Zaloguj się</h2>
@@ -53,7 +54,6 @@ export const Login = () => {
                             message: `Wymagana porawna forma emaila`,
                         },
                     })}
-                    onChange={handleChange}
                     placeholder="Email..."
                 />
                 {email && <div className='error_message'>{email.message}</div>}
