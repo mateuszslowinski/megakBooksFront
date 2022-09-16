@@ -3,14 +3,32 @@
     justify-content: space-between;
 
     flex-wrap: wrap;
-    width: 100vw;
-    margin:  5px;
-    padding: 10px 5px;
+    width: 100%;
+    padding: 10px 0;
     background-color: #24252A;
 }
+.menu_item button{
+    font-size: 20px;
+    padding: 5px;
+    margin:0 10px;
+    color: #edf0f1;
+    background-color: #24252A;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.menu_item p {
+    font-size: 20px;
+    color: #edf0f1;
+}
 
+.menu_item button:hover {
+    color: red;
+
+}
 .menu_links {
     display: flex;
+    align-items: center;
     list-style-type: none;
 
 }
@@ -19,7 +37,7 @@
     line-height: 35px;
     font-size: 20px;
     padding: 5px;
-    margin: 5px;
+    margin: 5px 6px;
     color: #edf0f1;
     text-decoration: none;
     transition: 0.5s;
