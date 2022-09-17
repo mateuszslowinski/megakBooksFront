@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from "react";
+import axios from "axios";
 import {useParams} from "react-router-dom";
 import {Book} from "../Books/Book/Book";
 import {Message} from "../../common/Message/Message";
 import {Pagination} from "../../common/Pagination/Pagination";
 import {apiUrl} from "../../../config/api";
 import {BookEntity} from 'types';
-
 import './Search.css';
-
-
 
 export const Search = () => {
     const [books, setBooks] = useState<BookEntity[]>([]);
@@ -22,16 +20,13 @@ export const Search = () => {
         setPageNumber(selected);
     };
 
-
     useEffect(() => {
         (async () => {
-            const res = await fetch(`${apiUrl}/books`);
-            const data = await res.json();
-            setBooks(data);
+            const res = await axios(`${apiUrl}/books`);
+            setBooks(res.data);
             if (term !== undefined) {
-                const res = await fetch(`${apiUrl}/search/${term}`);
-                const data = await res.json();
-                setBooks(data);
+                const res = await axios(`${apiUrl}/search/${term}`);
+                setBooks(res.data);
             }
         })();
     }, [term])

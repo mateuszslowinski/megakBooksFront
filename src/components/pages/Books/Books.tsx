@@ -1,22 +1,22 @@
 import React, {useEffect, useState} from "react";
-import {BooksContext} from "../../context/BooksContext/BooksContext";
 import {Pagination} from "../../common/Pagination/Pagination";
 import {Book} from "./Book/Book";
 import {Message} from "../../common/Message/Message";
-import {SelectOptions} from "../../utils/SelectOptions/SelectOptions";
-import {apiUrl} from "../../../config/api";
-import {BookEntity} from 'types';
-
 import './Books.css'
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../../app/store";
+import {UserState} from "../../../features/user/userSlice";
+import {getUserBooks,} from "../../../features/user/userActions";
+import {useNavigate} from "react-router-dom";
 
 
 export const Books = () => {
+    const {books,userInfo}: UserState = useSelector((store: RootState) => store.users);
 
-    const [books, setBooks] = useState<BookEntity[]>([]);
     const [pageNumber, setPageNumber] = useState<number>(0);
     const [loading, setLoading] = useState(true);
-    const [sortValue, setSortValue] = useState('');
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const bookPerPage = 8;
     const pagesVisited = pageNumber * bookPerPage;
 
@@ -24,23 +24,9 @@ export const Books = () => {
 
 
     useEffect(() => {
-        (async () => {
-            if (sortValue === 'best') {
-                const res = await fetch(`${apiUrl}/select/increase`);
-                const data = await res.json();
-                setBooks(data);
-            } else if (sortValue === 'worse') {
-                const res = await fetch(`${apiUrl}/select/decrease`);
-                const data = await res.json();
-                setBooks(data);
-            } else {
-                const res = await fetch(`${apiUrl}/select/alphabetically`);
-                const data = await res.json();
-                setBooks(data);
-            }
-            setLoading(false);
-        })()
-    }, [sortValue])
+        dispatch(getUserBooks());
+        setLoading(false)
+    }, [dispatch])
 
     const changePage = ({selected}: { selected: number }): void => {
         setPageNumber(selected);
@@ -50,22 +36,22 @@ export const Books = () => {
         return <Message text="Wczytywanie danych..."/>
     }
 
+    if (!userInfo) {
+        navigate('/')
+    }
     return (
         <> {books.length !== 0
             ? <>
-                <BooksContext.Provider value={{sortValue, setSortValue}}>
-                    <h2>Najlepiej ocenione książki:<SelectOptions/></h2>
-
-                    <div className='books_container'>
-                        {books.slice(pagesVisited, pagesVisited + bookPerPage).map(book => (
-                            <Book
-                                key={book.id}
-                                {...book}
-                            />
-                        ))}
-                        <Pagination pageCount={pageCount} onChange={changePage}/>
-                    </div>
-                </BooksContext.Provider>
+                <h2>Twoje książki:</h2>
+                <div className='books_container'>
+                    {books.slice(pagesVisited, pagesVisited + bookPerPage).map(book => (
+                        <Book
+                            key={book.id}
+                            {...book}
+                        />
+                    ))}
+                    <Pagination pageCount={pageCount} onChange={changePage}/>
+                </div>
             </>
             : <Message text="Dodaj książki do swojej biblioteki"/>}
         </>

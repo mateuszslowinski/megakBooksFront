@@ -15,20 +15,20 @@ interface Props {
     formValues: BookEntity;
 }
 
-export const BookForm = (props: Props) => {
+export const BookForm = ({btnText,method,messageText,urlAddress,formValues}: Props) => {
 
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [resId, setResId] = useState('');
 
     const [form, setForm] = useState({
-        title: props.formValues.title ,
-        author: props.formValues.author,
-        rating: props.formValues.rating,
-        desc: props.formValues.desc,
-        publisher: props.formValues.publisher,
-        pages: props.formValues.pages,
-        species: props.formValues.species,
+        title: formValues.title ,
+        author: formValues.author,
+        rating: formValues.rating,
+        desc: formValues.desc,
+        publisher: formValues.publisher,
+        pages: formValues.pages,
+        species: formValues.species,
     });
 
     const updateForm = (key: string, value: any) => {
@@ -43,8 +43,8 @@ export const BookForm = (props: Props) => {
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
         try {
-            const res = await fetch(props.urlAddress, {
-                method: props.method,
+            const res = await fetch(urlAddress, {
+                method,
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({...form})
             });
@@ -56,15 +56,15 @@ export const BookForm = (props: Props) => {
     }
 
     if (loading) {
-        return <h2>Trwa {props.messageText} książki</h2>
+        return <h2>Trwa {messageText} książki</h2>
     }
     if (resId) {
-        navigate('/books');
+        navigate('/');
     }
 
     return (
         <form action="" className='form' onSubmit={submit}>
-            <h2>{props.messageText} książki </h2>
+            <h2>{messageText} książki </h2>
             <TextInput header="Tytuł:" name="text" maxLength={200} value={form.title}
                        onChange={e => updateForm('title', e.target.value)}/>
             <TextInput header="Autor:" name="author" maxLength={100} value={form.author}
@@ -88,7 +88,7 @@ export const BookForm = (props: Props) => {
                          onChange={e => updateForm('pages', Number(e.target.value))}/>
             <TextInput header="Gatunek:" name='species' maxLength={36} value={form.species}
                        onChange={e => updateForm('species', e.target.value)}/>
-            <Btn text={props.btnText}/>
+            <Btn text={btnText}/>
         </form>
     )
 }
